@@ -1,6 +1,8 @@
 # syntax=docker/dockerfile:1.7
 
-FROM lancommander/steamcmd:latest
+# Override to build against a locally built base, e.g. lancommander/steamcmd:local
+ARG BASE_IMAGE=lancommander/steamcmd:latest
+FROM ${BASE_IMAGE}
 
 # SteamCMD settings
 ENV STEAM_APP_ID="232290"
