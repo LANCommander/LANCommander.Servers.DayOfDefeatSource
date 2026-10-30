@@ -19,6 +19,8 @@ ENV HTTP_FILESERVER_FILE_PATTERN="^/(maps|materials|models|sound)/.*\.(bz2|ztmp|
 # ----------------------------
 # Dependencies
 # ----------------------------
+USER root
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
@@ -36,6 +38,8 @@ EXPOSE 80/tcp
 
 # COPY Modules/ "${BASE_MODULES}/"
 COPY Hooks/ "${BASE_HOOKS}/"
+
+USER lancommander
 
 WORKDIR /config
 ENTRYPOINT ["/usr/local/bin/entrypoint.ps1"]
